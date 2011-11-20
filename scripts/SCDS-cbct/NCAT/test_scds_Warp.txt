@@ -1,0 +1,5 @@
+mkdir /stage/sharonxx/proj/mskcc/NCAT/cbct/atlas
+scdsWarp --outputImageFilenamePrefix=/stage/sharonxx/proj/mskcc/NCAT/cbct/atlas/averageImage_       --outputDeformedImageFilenamePrefix=/stage/sharonxx/proj/mskcc/NCAT/cbct/atlas/deformedImage_    --outputHFieldFilenamePrefix=/stage/sharonxx/proj/mskcc/NCAT/cbct/atlas/deformationField_   --scaleLevel=4 --numberOfIterations=100          --scaleLevel=2 --numberOfIterations=50           --scaleLevel=1 --numberOfIterations=25       /stage/sharonxx/proj/mskcc/NCAT/cbct/image/gray/phase*.mhd
+
+
+--outputImageFilenamePrefix=averageImage_       --outputDeformedImageFilenamePrefix=deformedImage_    --outputHFieldFilenamePrefix=deformationField_      --scaleLevel=1 --numberOfIterations=1   deformed*.mhd

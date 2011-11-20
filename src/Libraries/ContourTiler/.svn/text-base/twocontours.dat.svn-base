@@ -1,0 +1,14 @@
+factor 2
+numslices 2
+slice 0
+0 0
+0 1
+1 1
+1 0
+-1 -1
+slice 1
+0 0
+0 1
+1 1
+1 0
+-1 -1

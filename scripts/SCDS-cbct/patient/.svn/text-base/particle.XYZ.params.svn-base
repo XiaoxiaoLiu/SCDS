@@ -1,0 +1,23 @@
+(output_points_prefix "points")
+
+(inputs 
+"../lung-bin-cinePhase00.dis.mhd"
+"../lung-bin-cinePhase10.dis.mhd"
+"../lung-bin-cinePhase20.dis.mhd"
+"../lung-bin-cinePhase30.dis.mhd"
+"../lung-bin-cinePhase40.dis.mhd"
+"../lung-bin-cinePhase50.dis.mhd"
+"../lung-bin-cinePhase60.dis.mhd" 
+"../lung-bin-cinePhase70.dis.mhd" 
+"../lung-bin-cinePhase80.dis.mhd" 
+"../lung-bin-cinePhase90.dis.mhd"
+)
+
+//(point_files "lung-pts.00.lpts" "lung-pts.01.lpts" "lung-pts.02.lpts" "lung-pts.03.lpts" "lung-pts.04.lpts" "lung-pts.05.lpts" "lung-pts.06.lpts"  "lung-pts.07.lpts"  "lung-pts.08.lpts"  "lung-pts.09.lpts")
+
+(point_files "../seeds.lpts" "../seeds.lpts" "../seeds.lpts" "../seeds.lpts" "../seeds.lpts" "../seeds.lpts" "../seeds.lpts"  "../seeds.lpts"  "../seeds.lpts"  "../seeds.lpts")
+(outputs "/dev/null")
+(attributes_per_domain 0)
+(antialias_iterations 40)
+//(blur_sigma 1.7)
+(fastmarching_isovalue 0.0)

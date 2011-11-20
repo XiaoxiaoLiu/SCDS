@@ -1,0 +1,14 @@
+NUMBER_OF_SHAPES=10
+NUMBER_OF_ATTRIBUTES=4
+TEMPLATE_INDEX=0
+WEIGHTS=1 1 1 1
+lung-cinePhase00.vtk      lung-cinePhase00.x.txt   lung-cinePhase00.y.txt  lung-cinePhase00.z.txt   lung-cinePhase00.curvature.txt  
+lung-cinePhase10.vtk      lung-cinePhase10.x.txt   lung-cinePhase10.y.txt  lung-cinePhase10.z.txt   lung-cinePhase10.curvature.txt  
+lung-cinePhase20.vtk      lung-cinePhase20.x.txt   lung-cinePhase20.y.txt  lung-cinePhase20.z.txt   lung-cinePhase20.curvature.txt  
+lung-cinePhase30.vtk      lung-cinePhase30.x.txt   lung-cinePhase30.y.txt  lung-cinePhase30.z.txt   lung-cinePhase30.curvature.txt 
+lung-cinePhase40.vtk      lung-cinePhase40.x.txt   lung-cinePhase40.y.txt  lung-cinePhase40.z.txt   lung-cinePhase40.curvature.txt  
+lung-cinePhase50.vtk      lung-cinePhase50.x.txt   lung-cinePhase50.y.txt  lung-cinePhase50.z.txt   lung-cinePhase50.curvature.txt  
+lung-cinePhase60.vtk      lung-cinePhase60.x.txt   lung-cinePhase60.y.txt  lung-cinePhase60.z.txt   lung-cinePhase60.curvature.txt  
+lung-cinePhase70.vtk      lung-cinePhase70.x.txt   lung-cinePhase70.y.txt  lung-cinePhase70.z.txt   lung-cinePhase70.curvature.txt  
+lung-cinePhase80.vtk      lung-cinePhase80.x.txt   lung-cinePhase80.y.txt  lung-cinePhase80.z.txt   lung-cinePhase80.curvature.txt  
+lung-cinePhase90.vtk      lung-cinePhase90.x.txt   lung-cinePhase90.y.txt  lung-cinePhase90.z.txt   lung-cinePhase90.curvature.txt   

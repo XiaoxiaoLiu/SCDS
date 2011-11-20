@@ -1,0 +1,23 @@
+ADD_LIBRARY(CTI  
+  addrand.cxx
+  adj.cxx
+  cocirc.cxx
+  coli.cxx
+  cross.cxx
+  cti_globals.cxx
+  ctiler.cxx
+  cvt_phase.cxx
+  del.cxx
+  elim_coli.cxx
+  extractslab.cxx
+  insertpt.cxx
+  massage.cxx
+  mer.cxx
+  old_ctiler.cxx
+  read_contours.cxx
+  sculpt.cxx
+  slabtocaptile.cxx
+  solidtet.cxx
+  surfacetotile.cxx
+  vor.cxx
+  )

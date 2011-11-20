@@ -1,0 +1,11 @@
+NUMBER_OF_SHAPES=10
+lung-pts1024.02.lpts ../lung-bin-crop-pad-cinePhase20.vtk
+lung-pts1024.00.lpts ../lung-bin-crop-pad-cinePhase00.vtk
+lung-pts1024.01.lpts ../lung-bin-crop-pad-cinePhase10.vtk
+lung-pts1024.03.lpts ../lung-bin-crop-pad-cinePhase30.vtk
+lung-pts1024.04.lpts ../lung-bin-crop-pad-cinePhase40.vtk
+lung-pts1024.05.lpts ../lung-bin-crop-pad-cinePhase50.vtk
+lung-pts1024.06.lpts ../lung-bin-crop-pad-cinePhase60.vtk
+lung-pts1024.07.lpts ../lung-bin-crop-pad-cinePhase70.vtk
+lung-pts1024.08.lpts ../lung-bin-crop-pad-cinePhase80.vtk
+lung-pts1024.09.lpts ../lung-bin-crop-pad-cinePhase90.vtk

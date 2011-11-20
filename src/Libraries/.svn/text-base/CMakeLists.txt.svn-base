@@ -1,0 +1,13 @@
+SUBDIRS(
+  Algorithms
+  Base
+  DataTypes
+  Numerics
+  UtilitiesDataTypes
+  ContourTiler
+  DownsampleFilter
+  Matrix
+  planio
+  PowerCrust
+  #tclap
+)
