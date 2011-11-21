@@ -1,4 +1,5 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 2.4)
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8.3)
+
 SET(fWarp_SRCS
   main.cxx
 )
@@ -14,9 +15,6 @@ TARGET_LINK_LIBRARIES(fWarp
   ITKIO
   ITKCommon
   UtilDownsampleFilter
-  # prefer ${LAPACK_LIBRARIES}
-  #lapack
-  #g2c
   ${FFTWF_LIB}
 )
 

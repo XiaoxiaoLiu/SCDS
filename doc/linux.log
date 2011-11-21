@@ -1,0 +1,15 @@
+Try : ITK3-20
+
+1. fftw::sudo apt-get install libfftw3-dev
+
+2. if uuid.so can not be found, try:
+    $ cd /usr/lib
+    $ sudo ln -s /usr/lib/x86_64-linux-gnu/libuuid.so
+
+3.  lapack:
+    sudo apt-get install  liblapack-dev
+
+4. f2c :
+     sudo apt-get install  libf2c2-dev
+  libf2c error: undefined reference to 'MAIN_'
+    sudo rm /usr/lib/libf2c.so && sudo ln -s /usr/lib/libf2c.a /usr/lib/libf2c.so

@@ -1,12 +1,11 @@
-#-----------------------------------------------------------------------------
+#----------------------------------------------------------------------------
 # Top level CMakeLists.txt file for SCDS
-CMAKE_MINIMUM_REQUIRED(VERSION 2.4)
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8.3)
 PROJECT(SCDS)
 
 #-----------------------------------------------------------------------------
 # set cmake module path
-SET(SCDS_CMAKE_DIR "${SCDS_SOURCE_DIR}/CMake")
-SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${SCDS_CMAKE_DIR}/CMake")
+SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${SCDS_SOURCE_DIR}/CMake")
 
 #-----------------------------------------------------------------------------
 # set directory for compiled libraries and executables
@@ -35,54 +34,11 @@ IF (WIN32)
 ENDIF(WIN32)
 
 #-----------------------------------------------------------------------------
-# darwin specific options
-
-#-----------------------------------------------------------------------------
 # unix specific options
 IF(UNIX)
   OPTION(UNIX_WALL_MODE "Display all warnings." ON)
   SET(COMPONC_UNIX_WALL_MODE ${UNIX_WALL_MODE})
 ENDIF(UNIX)
-
-#--------------------------------
-# variables
-FIND_PATH(RADONC_LIBS_PATH fftw
-        /afs/radonc.unc.edu/home/sharonxx/public/libraries
-	"D:/libraries")
-
-#-----------------------------------------------------------------------------
-# set windows specific variables
-#IF(WIN32)
- # SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /w4")
-  #SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /w4")
-#ENDIF
-#-----------------------------------------------------------------------------
-# set darwin specific variables
-IF(APPLE)
-  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DDARWIN")
-  SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DDARWIN")
-ENDIF(APPLE)
-
-
-
-
-
-
-#-----------------------------------------------------------------------------
-# set windows specific variables
-#IF(WIN32)
- # SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /w4")
-  #SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /w4")
-#ENDIF
-#-----------------------------------------------------------------------------
-# set darwin specific variables
-IF(APPLE)
-  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DDARWIN")
-  SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DDARWIN")
-ENDIF(APPLE)
-
-#-----------------------------------------------------------------------------
-# set sun specific variables
 
 
 #-----------------------------------------------------------------------------
@@ -120,7 +76,7 @@ INCLUDE_DIRECTORIES(
 	${SCDS_SOURCE_DIR}/Libraries/planio
 	${SCDS_SOURCE_DIR}/Libraries/DownsampleFilter
 	${SCDS_SOURCE_DIR}/Libraries/ContourTiler
-	${SCDS_SOURCE_DIR}/Libraries/Matrix  
+	${SCDS_SOURCE_DIR}/Libraries/Matrix
   ${SCDS_SOURCE_DIR}/Libraries/Algorithms
   ${SCDS_SOURCE_DIR}/Libraries/Base
   ${SCDS_SOURCE_DIR}/Libraries/DataTypes
@@ -129,10 +85,6 @@ INCLUDE_DIRECTORIES(
   ${SCDS_SOURCE_DIR}/Libraries/PowerCrust
   ${SCDS_SOURCE_DIR}/Libraries/tclap
 )
-
-
-
-
 
 SCDS_USE_LAPACK()
 

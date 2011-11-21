@@ -7,7 +7,6 @@ SET(txApply_SRCS
 ADD_EXECUTABLE(txApply "${txApply_SRCS}")
 
 
-
 TARGET_LINK_LIBRARIES(txApply
 
 UtilitiesDataTypes
@@ -20,7 +19,6 @@ UtilitiesDataTypes
   ITKCommon
   ${LAPACK_LIBRARIES}
   vtkGraphics
-  vtkCommon 
- 
+  vtkCommon
   )
 
