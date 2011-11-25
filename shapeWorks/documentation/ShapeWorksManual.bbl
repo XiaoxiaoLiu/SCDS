@@ -1,0 +1,54 @@
+\begin{thebibliography}{1}
+
+\bibitem{CatesMICCAI2008}
+J.~Cates, P.~Fletcher, M.~Styner, H.~Hazlett, and R.~Whitaker.
+\newblock Particle-based shape analysis of multi-object complexes.
+\newblock In {\em Proceedings of the 11th International Conference on Medical
+  Image Computing and Computer Assisted Intervention}, page to appear. MICCAI,
+  2008.
+
+\bibitem{CatesMFCA2006}
+J.~Cates, P.~Fletcher, and R.~Whitaker.
+\newblock Entropy-based particle systems for shape correspondence.
+\newblock In {\em Mathematical Foundations of Computational Anatomy Workshop},
+  pages 90--99. MICCAI, 2006.
+
+\bibitem{CatesMFCA2008}
+J.~Cates, P.~Fletcher, and R.~Whitaker.
+\newblock A hypothesis testing framework for high-dimensional shape models.
+\newblock In {\em Mathematical Foundations of Computational Anatomy Workshop},
+  pages 170--181. MICCAI, 2008.
+
+\bibitem{Cates2007}
+J.~Cates, P.~T. Fletcher, M.~Styner, M.~Shenton, and R.~Whitaker.
+\newblock Shape modeling and analysis with entropy-based particle systems.
+\newblock In {\em Information Processing in Medical Imaging (IPMI 2007), LNCS
+  4584}, pages 333--345, 2007.
+
+\bibitem{Cates2008}
+J.~Cates, P.~T. Fletcher, Z.~Warnock, and R.~Whitaker.
+\newblock A shape analysis framework for small animal phenotyping with
+  application to mice with a targeted disruption of hoxd11.
+\newblock In {\em Proc. 5th IEEE International Symposium on Biomedical Imaging
+  (ISBI '08)}, pages 512--516, 2008.
+
+\bibitem{Goodall91}
+C.~Goodall.
+\newblock Procrustes methods in the statistical analysis of shape.
+\newblock {\em J. R. Statistical Society B}, 53:285--339, 1991.
+
+\bibitem{Hansen2001}
+M.~Hansen and B.~Yu.
+\newblock Model selection and the principle of minimum description length.
+\newblock {\em Journal of the American Statistical Association},
+  96(454):746--774, June 2001.
+
+\bibitem{IpekCates2008}
+I.~Oguz, J.~Cates, P.~T. Fletcher, Z.~Warnock, R.~Whitaker, D.~Cool,
+  S.~Aylward, and M.~Styner.
+\newblock Cortical correspondence using entropy-based particle systems and
+  local featrues.
+\newblock In {\em Proc. 5th IEEE International Symposium on Biomedical Imaging
+  (ISBI '08)}, pages 1637--1640, 2008.
+
+\end{thebibliography}

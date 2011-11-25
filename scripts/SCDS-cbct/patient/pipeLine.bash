@@ -1,19 +1,4 @@
-# bash scripts for running jobs on bass.cs.unc.edu
-# Xiaoxiao Liu
-# Modified  October, 2010
-
-
-
-##### Notes about qsub #####
-# qsub is a commond used for submitting scripted jobs to bass(.cs.unc.edu), it is used mostly for running multiple jobs
-# that are excuted at the same time in different computer nodes on bass.
-
-# For windowns users, the bash scripts in this document could be run directly from cygwin ( or run it on windows "cmd" after minor modifications) except the qsub command.
-# Users should take the code out of the input bash script file of each qsub, and strip the actually bash command lines accordingly.  Just take out the first several lines "
-# #$ -S /bin/bash #$ -o /home/sharonxx/tmp/   #$ -t 2  #$ -j y  #$ -pe smp"  and replace "$SGE_TASK_ID" with the acutal case numbers for each programs called.
-
-
-
+# bash scripts for running SCDS studies
 
 
 ###################   parmaters setting     #################################
@@ -26,14 +11,11 @@ pat$patNo.params.bash  # set threshold, seeds, crop parameters
 spacing=(1.52 1.52 1.52)  # CBCT's image sapcing for resampling purpose
 
 ## default data storgage settings
-scriptsFolder=~sharonxx/scripts/SCDS-cbct/patient
+scriptsFolder=.../scripts/SCDS-cbct/patient
 dataFolder=/stage/sharonxx/proj/mskcc/Patient$patNo
 cbctFolder=$dataFolder/cbct
-cbctImageFolder=$dataFolder/cbct/image
 
 rcctFolder=$dataFolder/rcct
-rcctImageFolder=$dataFolder/rcct/image
-rcctAtlasFolder=$dataFolder/rcct/atlas
 shapeFolder=$dataFolder/rcct/shape
 statsFolder=$dataFolder/rcct/stats
 
@@ -41,8 +23,6 @@ statsFolder=$dataFolder/rcct/stats
 resultsFolder=$dataFolder/results
 scdsPredictionFolder=$dataFolder/results/SCDS_predict
 scdsWarpFolder=$dataFolder/results/SCDS_warp
-
-origDICOMImageFolder=$dataFolder/pt$patNo/cbct1
 
 
 ## Align RRCT with CBCT
@@ -84,7 +64,7 @@ for i in  00 10 20 30 40 50 60 70 80 90; do  BinaryErode  $shapeFolder/lung-bin-
 
 ## 2. Generate distance map for correspondence
 
-qsub $scriptsFolder/distancemap_qsub.bash  $patNo
+ $scriptsFolder/distancemap_qsub.bash  $patNo
 
 
 ## 3. Interactively run correspondence 
@@ -99,12 +79,6 @@ cd  $shapeFolder/xyz
 #running with GUI
 cp $scriptsFolder/particle.params ./
 ShapeWorksShop particle.params 
-
-
-
-#running without GUI
-cp $scriptsFolder/shapeWorksRun.params ./
-ShapeWorksRun ./shapeWorksRun.params
 
 
 
