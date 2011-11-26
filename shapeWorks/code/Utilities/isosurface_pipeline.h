@@ -29,7 +29,6 @@
 #include "vtkTransformPolyDataFilter.h"
 #include "vtkPolyDataWriter.h"
 
-
 class isosurface_pipeline
 {
  public:

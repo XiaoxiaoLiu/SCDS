@@ -23,7 +23,7 @@ namespace itk {
 template <unsigned int VDimension>
 struct ParticlePointIndexPair
 {
-  typedef Point<double, VDimension> PointType;
+  typedef itk::Point<double, VDimension> PointType;
   
   ParticlePointIndexPair() {}
   ParticlePointIndexPair(const PointType &p, unsigned int i=0)

@@ -16,6 +16,7 @@
 #define __itkParticleSystem_txx
 
 #include "itkCommand.h"
+#include <cstdlib>
 namespace itk
 {
 
