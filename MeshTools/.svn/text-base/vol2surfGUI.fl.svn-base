@@ -1,0 +1,199 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0107 
+header_name {.h} 
+code_name {.cxx}
+class vol2surfGUI {open
+} {
+  Function {vol2surfGUI()} {open
+  } {
+    Fl_Window mainWindow {
+      label Vol2Surf open
+      xywh {1187 129 625 410} type Double box ENGRAVED_BOX resizable visible
+    } {
+      Fl_Group grOutputFormats {
+        label {Output formats}
+        private xywh {430 25 180 90} box ENGRAVED_BOX
+      } {
+        Fl_Check_Button cbSpatialObject {
+          label {Spatial Object}
+          callback {bool so = cbSpatialObject->value() ;
+bool mesh = cbMesh->value() ;
+bool byu = cbBYU->value() ;
+bool iv = cbIV->value() ;
+bool stl = cbSTL->value() ;
+vol2surfObject->setOutputFormat(so, mesh, byu, iv, stl);}
+          private xywh {456 30 25 25} down_box DOWN_BOX value 1 deactivate
+        }
+        Fl_Check_Button cbBYU {
+          label {.byu}
+          callback {bool so = cbSpatialObject->value() ;
+bool mesh = cbMesh->value() ;
+bool byu = cbBYU->value() ;
+bool iv = cbIV->value() ;
+bool stl = cbSTL->value();
+vol2surfObject->setOutputFormat(so, mesh, byu, iv, stl);}
+          private xywh {455 70 25 25} down_box DOWN_BOX
+        }
+        Fl_Check_Button cbIV {
+          label {.iv}
+          callback {bool so = cbSpatialObject->value() ;
+bool mesh = cbMesh->value() ;
+bool byu = cbBYU->value() ;
+bool iv = cbIV->value() ;
+bool stl = cbSTL->value() ;
+vol2surfObject->setOutputFormat(so, mesh, byu, iv, stl);}
+          private xywh {455 90 25 25} down_box DOWN_BOX
+        }
+        Fl_Check_Button cbMesh {
+          label {VTK mesh}
+          callback {bool so = cbSpatialObject->value() ;
+bool mesh = cbMesh->value() ;
+bool byu = cbBYU->value() ;
+bool iv = cbIV->value() ;
+bool stl = cbSTL->value();
+vol2surfObject->setOutputFormat(so, mesh, byu, iv, stl);}
+          private xywh {456 50 25 25} down_box DOWN_BOX value 1 deactivate
+        }
+        Fl_Check_Button cbSTL {
+          label {.stl}
+          callback {bool so = cbSpatialObject->value() ;
+bool mesh = cbMesh->value() ;
+bool byu = cbBYU->value() ;
+bool iv = cbIV->value() ;
+bool stl = cbSTL->value() ;
+vol2surfObject->setOutputFormat(so, mesh, byu, iv, stl);}
+          private xywh {525 70 25 25} down_box DOWN_BOX
+        }
+      }
+      Fl_Group grGaussian {
+        label {Gaussian Filtering} open
+        private xywh {216 134 190 81} box ENGRAVED_BOX
+      } {
+        Fl_Check_Button cbGaussian {
+          label {Apply Gaussian filtering}
+          callback {vol2surfObject->hasGaussian(cbGaussian->value());}
+          private xywh {226 141 25 21} down_box DOWN_BOX
+        }
+        Fl_Input ebVariance {
+          label Variance
+          callback {vol2surfObject->setVariance(ebVariance->value());}
+          private xywh {286 170 90 25} type Float
+        }
+      }
+      Fl_Group grLabel {
+        label {Extract Labels} open
+        private xywh {15 135 190 80} box ENGRAVED_BOX
+      } {
+        Fl_Check_Button cbLabel {
+          label {Extract label}
+          callback {vol2surfObject->hasLabel(cbLabel->value()) ;}
+          private xywh {30 140 25 25} down_box DOWN_BOX
+        }
+        Fl_Input ebLabel {
+          label Label
+          callback {vol2surfObject->setLabel(ebLabel->value());}
+          private xywh {70 170 105 25} type Int
+        }
+      }
+      Fl_Box vol2surfObject {
+        private xywh {20 85 25 15} hide
+        code0 {\#include "vol2surf.h"}
+        class vol2surf
+      }
+      Fl_Button btnRun {
+        label {Generate Surface}
+        callback {vol2surfObject->Run();}
+        xywh {240 360 155 35}
+      }
+      Fl_Group grThreshold {
+        label {Manual Threshold} open
+        xywh {200 25 220 90} box ENGRAVED_BOX
+      } {
+        Fl_Input ebThreshold {
+          label lower
+          callback {vol2surfObject->setThreshold(ebThreshold->value())}
+          xywh {260 60 105 25} type Float
+        }
+        Fl_Check_Button cbThreshold {
+          label {Manual threshold}
+          callback {vol2surfObject->hasThreshold(cbThreshold->value());}
+          xywh {205 25 100 40} down_box DOWN_BOX
+        }
+        Fl_Input ebThresholdUpper {
+          label upper
+          callback {vol2surfObject->setUpperThreshold(ebThresholdUpper->value())}
+          xywh {260 90 105 20} type Float
+        }
+      }
+      Fl_Group {} {
+        label {Connected Components}
+        xywh {15 235 205 75} box ENGRAVED_BOX
+      } {
+        Fl_Check_Button cbConComp {
+          label {Use connected components}
+          callback {vol2surfObject->hasConnected(cbConComp->value());}
+          xywh {15 235 25 25} down_box DOWN_BOX
+        }
+        Fl_Input ebConThresh {
+          label {Minimum Size:}
+          callback {vol2surfObject->setConnectedThreshold(ebConThresh->value());}
+          xywh {110 275 80 30} type Int
+        }
+      }
+      Fl_Output obVolume {
+        label {Volume:}
+        callback {obVolume->value(vol2surfObject->getVolumeStr());} selected
+        xywh {285 235 115 35}
+      }
+      Fl_Output obSurf {
+        label {Surface Area:}
+        callback {obSurf->value(vol2surfObject->getSurfaceAreaStr());}
+        xywh {500 235 115 35}
+      }
+      Fl_Output obSRR {
+        label {Sphere Radii Ratio}
+        callback {obSRR->value(vol2surfObject->getSphereRadiiRatioStr());}
+        xywh {395 280 130 25}
+      }
+      Fl_Group {} {
+        label {Input File} open
+        xywh {15 25 185 80} box ENGRAVED_BOX
+      } {
+        Fl_Button btnFile {
+          label {Browse...}
+          callback {fc->show();
+
+while (fc->visible())
+  Fl::wait();
+
+vol2surfObject->setFilename(fc->value());
+
+outFilename->value(fc->value());}
+          xywh {30 35 155 30}
+        }
+        Fl_Output outFilename {
+          label {Current:}
+          xywh {85 70 100 25}
+        }
+      }
+      Fl_Group grDecimation {
+        label Decimation
+        private xywh {435 135 175 45} box ENGRAVED_BOX
+      } {
+        Fl_Check_Button cbDecimationOnOff {
+          label {Decimation On}
+          callback {vol2surfObject->setDecimate(cbDecimationOnOff->value());}
+          private xywh {455 140 25 25} down_box DOWN_BOX
+        }
+      }
+    }
+    codeblock {fc = new Fl_File_Chooser(".", "*", Fl_File_Chooser::SINGLE, "Choose input file");} {open
+    } {}
+  }
+  Function {show(int argc, char **argv)} {open return_type void
+  } {
+    codeblock {mainWindow->show(argc, argv) ;} {open
+    } {}
+  }
+  decl {Fl_File_Chooser *fc;} {}
+} 
