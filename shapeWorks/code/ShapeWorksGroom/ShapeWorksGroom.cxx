@@ -32,7 +32,6 @@
 #include "group.h"
 #include "hole_fill.h"
 #include "vnl/vnl_vector.h"
-#include "vnl/vnl_quaternion.h"
 #include "transformbatchtool.h"
 #include "relabel.h"
 #include "measure_length.h"
