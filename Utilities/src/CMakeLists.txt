@@ -54,3 +54,6 @@ TARGET_LINK_LIBRARIES(TranslationRegistration  ITKAlgorithms ITKBasicFilters ITK
 
 ADD_EXECUTABLE(CropAndPad CropAndPad.cxx)
 TARGET_LINK_LIBRARIES(CropAndPad ITKAlgorithms ITKBasicFilters ITKCommon ITKIO)
+
+ADD_EXECUTABLE(DICOMSeriesTo3DImage DICOMSeriesTo3DImage.cxx)
+TARGET_LINK_LIBRARIES(DICOMSeriesTo3DImage ITKCommon ITKIO)
