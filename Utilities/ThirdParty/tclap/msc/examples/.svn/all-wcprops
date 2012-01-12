@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/tclap/msc/examples
+END
+test1.vcproj
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/tclap/msc/examples/test1.vcproj
+END
+test2.vcproj
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/tclap/msc/examples/test2.vcproj
+END
+test3.vcproj
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/tclap/msc/examples/test3.vcproj
+END
+test4.vcproj
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/tclap/msc/examples/test4.vcproj
+END
+test5.vcproj
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/tclap/msc/examples/test5.vcproj
+END
+test6.vcproj
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/tclap/msc/examples/test6.vcproj
+END
+test7.vcproj
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/tclap/msc/examples/test7.vcproj
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/tclap/msc/examples/Makefile.am
+END
+test8.vcproj
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/tclap/msc/examples/test8.vcproj
+END

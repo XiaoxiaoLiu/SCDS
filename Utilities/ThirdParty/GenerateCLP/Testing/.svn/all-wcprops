@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/GenerateCLP/Testing
+END
+Slicer3Example.xml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/GenerateCLP/Testing/Slicer3Example.xml
+END
+Slicer3Example.cxx
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/GenerateCLP/Testing/Slicer3Example.cxx
+END
+PointExample1.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/GenerateCLP/Testing/PointExample1.xml
+END
+PointExample1.cxx
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/GenerateCLP/Testing/PointExample1.cxx
+END
+CLPExample1.xml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/GenerateCLP/Testing/CLPExample1.xml
+END
+CLPExample1.cxx
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/GenerateCLP/Testing/CLPExample1.cxx
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/GenerateCLP/Testing/CMakeLists.txt
+END

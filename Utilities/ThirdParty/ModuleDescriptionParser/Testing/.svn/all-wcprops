@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/ModuleDescriptionParser/Testing
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/ModuleDescriptionParser/Testing/CMakeLists.txt
+END
+ModuleFactoryTest.cxx
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/ModuleDescriptionParser/Testing/ModuleFactoryTest.cxx
+END
+Parser1Test.cxx
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/ModuleDescriptionParser/Testing/Parser1Test.cxx
+END

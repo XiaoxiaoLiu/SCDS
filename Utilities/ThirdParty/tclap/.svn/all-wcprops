@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/tclap
+END
+GenerateTCLAPConfig.cmake
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/tclap/GenerateTCLAPConfig.cmake
+END
+AUTHORS
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/tclap/AUTHORS
+END
+configure.in
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/tclap/configure.in
+END
+ChangeLog
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/tclap/ChangeLog
+END
+Example.xml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/tclap/Example.xml
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/tclap/README
+END
+autotools.sh
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/tclap/autotools.sh
+END
+UseTCLAP.cmake.in
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/tclap/UseTCLAP.cmake.in
+END
+TCLAPInstallConfig.cmake.in
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/tclap/TCLAPInstallConfig.cmake.in
+END
+INSTALL
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/tclap/INSTALL
+END
+COPYING
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/tclap/COPYING
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/tclap/Makefile.am
+END
+NEWS
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/tclap/NEWS
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/tclap/CMakeLists.txt
+END
+TCLAPConfig.cmake.in
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/tclap/TCLAPConfig.cmake.in
+END

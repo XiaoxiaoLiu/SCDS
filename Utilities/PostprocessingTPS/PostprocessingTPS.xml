@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<executable>
+<title>Particle Correspondence Postprocessing using Thin Plate Splines</title>
+<description>La la la</description>
+<category>Particle Correspondence</category>
+   <parameters>
+	<label>Required parameters</label>
+	<description>asdasdasd</description>
+    
+      <file fileExtensions=".params,.txt">
+      <longflag>parameterFileName</longflag>
+      <description>Name of the file containing corresponding particle file paths</description>
+      <label>Parameter file</label>
+      <channel>input</channel>
+    </file>
+    <integer>
+        <longflag>templateID</longflag>
+        <description>Index of the particle file corresponding to the template mesh</description>
+        <label>templateID</label>
+        <default>0</default>
+    </integer>
+
+    <directory>
+      <longflag>workingDirectory</longflag>
+      <description>workding directory used to find files in parameter file</description>
+      <label>Working Directory</label>
+      <default>.</default>
+      <channel>input</channel>
+    </directory>
+
+   <directory>
+     <longflag>outputDirectory</longflag>
+     <description>Specify directory to be used for output files, if different than input</description>
+     <label>Output Directory</label>
+     <default></default>
+     <channel>input</channel>
+    </directory> 
+    
+    <boolean>
+      <longflag>debug</longflag>
+      <description>Outputs debug information</description>
+      <label>Debug Mode</label>
+      <default>false</default>
+    </boolean>
+
+    <boolean>
+       <longflag>projectToSurface</longflag>
+       <description>Project the interpolated surface to the original surface</description>
+       <label>Project to Surface</label>
+       <default>true</default>
+    </boolean>	
+
+    <float>
+       <longflag>projectionFactor</longflag>
+       <description>How accurate a projection is desired (0=no projection, 1=full projection with possibly collapsed triangles)</description>
+       <label>Projection factor</label>
+       <default>0.999</default>
+    </float>
+
+    <boolean>
+      <longflag>saveTPSFiles</longflag>
+      <description>Save TPS only results into file. Need to add additional TPS files</description>
+      <label>Save TPS Results</label>
+      <default>false</default>
+    </boolean>
+
+  </parameters>
+</executable>

@@ -1,0 +1,167 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/Slicer3/!svn/ver/15401/trunk/Libs/SlicerExecutionModel/ModuleDescriptionParser
+END
+ModuleDescription.h
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/ModuleDescriptionParser/ModuleDescription.h
+END
+ModuleDescriptionParserConfig.cmake.in
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/ModuleDescriptionParser/ModuleDescriptionParserConfig.cmake.in
+END
+ModuleProcessInformation.h
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/ModuleDescriptionParser/ModuleProcessInformation.h
+END
+BinaryFileDescriptor.cxx
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/ModuleDescriptionParser/BinaryFileDescriptor.cxx
+END
+ModuleDescriptionUtilities.cxx
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/ModuleDescriptionParser/ModuleDescriptionUtilities.cxx
+END
+GenerateModuleDescriptionParserConfig.cmake
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/ModuleDescriptionParser/GenerateModuleDescriptionParserConfig.cmake
+END
+ModuleParameter.cxx
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/ModuleDescriptionParser/ModuleParameter.cxx
+END
+ModuleDescriptionParserWin32Header.h
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/ModuleDescriptionParser/ModuleDescriptionParserWin32Header.h
+END
+ModuleParameterGroup.h
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/ModuleDescriptionParser/ModuleParameterGroup.h
+END
+ModuleDescription.cxx
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/ModuleDescriptionParser/ModuleDescription.cxx
+END
+ModuleProcessInformation.cxx
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/ModuleDescriptionParser/ModuleProcessInformation.cxx
+END
+ModuleDescriptionParser.h
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/ModuleDescriptionParser/ModuleDescriptionParser.h
+END
+ModuleLogo.h
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/ModuleDescriptionParser/ModuleLogo.h
+END
+BatchMakeUtilities.h
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/ModuleDescriptionParser/BatchMakeUtilities.h
+END
+ModuleFactory.h
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/ModuleDescriptionParser/ModuleFactory.h
+END
+ModuleDescriptionParserConfigure.h.in
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/ModuleDescriptionParser/ModuleDescriptionParserConfigure.h.in
+END
+ModuleParameterGroup.cxx
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/ModuleDescriptionParser/ModuleParameterGroup.cxx
+END
+ModuleDescriptionParserInstallConfig.cmake.in
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/ModuleDescriptionParser/ModuleDescriptionParserInstallConfig.cmake.in
+END
+ModuleDescriptionParser.cxx
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/Slicer3/!svn/ver/15344/trunk/Libs/SlicerExecutionModel/ModuleDescriptionParser/ModuleDescriptionParser.cxx
+END
+ModuleLogo.cxx
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/ModuleDescriptionParser/ModuleLogo.cxx
+END
+UseModuleDescriptionParser.cmake.in
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/ModuleDescriptionParser/UseModuleDescriptionParser.cmake.in
+END
+BinaryFileDescriptor.h
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/ModuleDescriptionParser/BinaryFileDescriptor.h
+END
+ModuleDescriptionUtilities.h
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/ModuleDescriptionParser/ModuleDescriptionUtilities.h
+END
+BatchMakeUtilities.cxx
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/ModuleDescriptionParser/BatchMakeUtilities.cxx
+END
+ModuleParameter.h
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/ModuleDescriptionParser/ModuleParameter.h
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/Slicer3/!svn/ver/15041/trunk/Libs/SlicerExecutionModel/ModuleDescriptionParser/CMakeLists.txt
+END
+ModuleFactory.cxx
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/Slicer3/!svn/ver/15401/trunk/Libs/SlicerExecutionModel/ModuleDescriptionParser/ModuleFactory.cxx
+END
