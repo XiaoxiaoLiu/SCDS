@@ -55,3 +55,4 @@ saveas(gcf,[diffeoDir,'/varPCs-h.pdf']);
 
 stats = struct('mean',meanH, 'PCs',PCs,'scores',scores,'LATENT',LATENT);
 
+clear H;
