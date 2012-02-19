@@ -1,4 +1,4 @@
-function run_prediction_inter
+function run_training_andprediction_from_diaphgram
 
 dbstop if error ;
 

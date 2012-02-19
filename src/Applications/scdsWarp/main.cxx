@@ -462,8 +462,7 @@ int main(int argc, char **argv)
 			iwMin = ApplicationUtils::ParseOptionDouble(argc, argv);
 			useIntensityWindow = true;
 		}
-		else if (arg.find("-x")==0 || arg.find("--intensityWindowMax")==0)
-		{
+		else if (arg.find("-x")==0 || arg.find("--intensityWindowMax")==0) {
 			iwMax = ApplicationUtils::ParseOptionDouble(argc, argv);
 			useIntensityWindow = true;
 		}

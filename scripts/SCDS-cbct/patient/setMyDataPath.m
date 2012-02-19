@@ -10,14 +10,15 @@ mkdir(resultsFolder);
 
 shapeDir = [dataDir,'/rcct/shape/xyz'];
 diffeoDir = [dataDir,'/rcct/atlas'];
-% diffeoDir = [dataDir,'/rcct/largeWarp'];
-statsDir = [dataDir,'/rcct/stats/meshPtsStats-xyz'];  %%%  PtsStats-xyz
+
+%statsDir = [dataDir,'/rcct/stats/meshPtsStats-xyz'];  %%%  MeshStats-xyz
+statsDir = [dataDir,'/rcct/stats/PtsStats-xyz'];  %%%  PtsStats-xyz
 if ~exist(statsDir,'dir')
     mkdir(statsDir);
 end
 
 referenceImageFile =  [dataDir,'/rcct/image/gray-inter/cinePhase50.mhd'];
-shapeModelPrefix ='lung-pts1024';% 
+shapeModelPrefix ='lung-pts1024';
 diffeoType='fluid';
 
 
