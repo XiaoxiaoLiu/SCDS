@@ -12,8 +12,6 @@
 #include <vector>
 #include <iostream>
 #include <exception>
-#include "FluidWarp.h"
-#include "FluidWarpParameters.h"
 #include "HField3DUtils.h"
 #include "HField3DIO.h"
 #include <itkTransformFileReader.h>
@@ -21,6 +19,7 @@
 #include <itkMultiThreader.h>
 
 #include <cstring>
+#include "ConstrainedFluidWarp.h"
 
 #define appout std::cerr
 const std::string PROGRAM_NAME = "cfWarp";
@@ -38,11 +37,11 @@ void initializeHField(Array3D< Vector3D<float> >* h,
 	invtransform->SetCenter(affine->GetCenter());
 	affine->GetInverse(invtransform);
 
-	for (unsigned int z = 0; z < size.z; ++z) 
+	for (unsigned int z = 0; z < size.z; ++z)
 	{
-		for (unsigned int y = 0; y < size.y; ++y) 
+		for (unsigned int y = 0; y < size.y; ++y)
 		{
-			for (unsigned int x = 0; x < size.x; ++x) 
+			for (unsigned int x = 0; x < size.x; ++x)
 			{
 				itk::Point<float, 3> p, tp, tinvp;
 				p[0] = x * spacing[0] + origin[0];
@@ -70,11 +69,11 @@ void initializeHField(Array3D< Vector3D<float> >* h,
 
 void printUsage()
 {
-  appout << "Usage: " 
+  appout << "Usage: "
          << PROGRAM_NAME << " [OPTION]... fixedImage movingImage "
          << std::endl << std::endl;
-  
-  appout << "Options:" 
+
+  appout << "Options:"
          << std::endl
          << "  -h, --help                      show this help"
          << std::endl
@@ -123,7 +122,7 @@ void printUsage()
          << std::endl
          << "      --fftwPlan=FILENAME         FFTW plan (NOT IMPLEMENTED!)"
          << std::endl
-         << "  Extra output:" << std::endl 
+         << "  Extra output:" << std::endl
          << "      --extraOutputStride=VAL     write atlas data every VAL iterations"
          << std::endl
          << "      --writeVolume               write atlas volume every Stride iterations"
@@ -135,7 +134,7 @@ void printUsage()
          << "      --writeZSlice=SLICE         write z slice of atlas volume every Stride iterations"
          << std::endl;
   appout << std::endl << std::endl;
-  
+
   appout << "Example: " << std::endl
          << PROGRAM_NAME << "                                            \\"
          << std::endl
@@ -149,11 +148,11 @@ void printUsage()
          << std::endl
          << " --scaleLevel=1 --numberOfIterations=10          \\"
          << std::endl
-         << " fixed.mhd moving.mhd" 
-         << std::endl 
+         << " fixed.mhd moving.mhd"
+         << std::endl
          << std::endl
          << "This downsamples twice, runs 50 iterations, upsamples to half "
-         << std::endl 
+         << std::endl
          << "resolution, runs 50 iterations, and finally upsamples to full"
          << std::endl
          << "resolution and runs 25 iterations." << std::endl;
@@ -194,11 +193,11 @@ int main(int argc, char **argv)
   int writeYSlice = -1;
   int writeZSlice = -1;
   float iwMin, iwMax;
-  
+
   bool fftwMeasure = true;
-  int  fftwNumberOfThreads = 
+  int  fftwNumberOfThreads =
     itk::MultiThreader::GetGlobalDefaultNumberOfThreads();
- 
+
 
 
 
@@ -231,24 +230,24 @@ int main(int argc, char **argv)
     }
     else if (arg.find("-s")==0 || arg.find("--scaleLevel")==0)
     {
-      double newScaleLevel = 
+      double newScaleLevel =
         ApplicationUtils::ParseOptionDouble(argc, argv);
       scaleLevels.push_back(newScaleLevel);
       fluidParams.push_back(defaultFluidParams);
     }
     else if (arg.find("-o")==0 || arg.find("--outputImageFilenamePrefix")==0)
     {
-      outputImageFilenamePrefix = 
+      outputImageFilenamePrefix =
         ApplicationUtils::ParseOptionString(argc, argv);
     }
     else if (arg.find("-h")==0 || arg.find("--outputHFieldFilenamePrefix")==0)
     {
-      outputHFieldFilenamePrefix = 
+      outputHFieldFilenamePrefix =
         ApplicationUtils::ParseOptionString(argc, argv);
     }
     else if (arg.find("--writeInverseHFields")==0)
     {
-      writeInverseHFields = 
+      writeInverseHFields =
         ApplicationUtils::ParseOptionBool(argc, argv);
     }
     else if (arg.find("--extraOutputStride")==0)
@@ -328,19 +327,19 @@ int main(int argc, char **argv)
     }
     else if (arg.find("--numberOfTimeSteps")==0)
     {
-      std::cerr << "numberOfTimeSteps is not currently implemented!" 
+      std::cerr << "numberOfTimeSteps is not currently implemented!"
                 << std::endl;
       exit(0);
     }
     else if (arg.find("--epsilon")==0)
     {
-      std::cerr << "epsilon is not currently implemented!" 
+      std::cerr << "epsilon is not currently implemented!"
                 << std::endl;
       exit(0);
     }
     else if (arg.find("--sigma")==0)
     {
-      std::cerr << "sigma is not currently implemented!" 
+      std::cerr << "sigma is not currently implemented!"
                 << std::endl;
       exit(0);
     }
@@ -364,7 +363,7 @@ int main(int argc, char **argv)
     }
     else if (arg.find("--fftwPlan")==0)
     {
-      std::cerr << "The fftwPlan option is currently not implemented!" 
+      std::cerr << "The fftwPlan option is currently not implemented!"
                 << std::endl;
       exit(0);
     }
@@ -407,16 +406,16 @@ int main(int argc, char **argv)
     appout << "Unknown" << std::endl;
     printUsage();
     return(0);
-  }      
-  appout << "Output Image Prefix   : " 
-         << (outputImageFilenamePrefix.length() ? 
+  }
+  appout << "Output Image Prefix   : "
+         << (outputImageFilenamePrefix.length() ?
              outputImageFilenamePrefix : "(none)")
          << std::endl;
-  appout << "Output h Field Prefix : " 
-         << (outputHFieldFilenamePrefix.length() ? 
+  appout << "Output h Field Prefix : "
+         << (outputHFieldFilenamePrefix.length() ?
              outputHFieldFilenamePrefix : "(none)")
          << std::endl;
-  appout << "Write inverse h fields: " 
+  appout << "Write inverse h fields: "
          << (writeInverseHFields ? "true" : "false")
          << std::endl;
   appout << "Intensity Window      : ";
@@ -435,23 +434,23 @@ int main(int argc, char **argv)
 
   for (int scale = 0; scale < (int) scaleLevels.size(); ++scale)
   {
-    appout << "Scale                 : " 
-           << scaleLevels[scale] 
+    appout << "Scale                 : "
+           << scaleLevels[scale]
            << std::endl;
-    appout << "alpha                 : " 
-           << fluidParams[scale].alpha 
+    appout << "alpha                 : "
+           << fluidParams[scale].alpha
            << std::endl;
-    appout << "beta                  : " 
-           << fluidParams[scale].beta 
+    appout << "beta                  : "
+           << fluidParams[scale].beta
            << std::endl;
-    appout << "gamma                 : " 
-           << fluidParams[scale].gamma 
+    appout << "gamma                 : "
+           << fluidParams[scale].gamma
            << std::endl;
-    appout << "Max. Pert.            : " 
-           << fluidParams[scale].maxPerturbation 
+    appout << "Max. Pert.            : "
+           << fluidParams[scale].maxPerturbation
            << std::endl;
-    appout << "Num. Iterations       : " 
-           << fluidParams[scale].numIterations 
+    appout << "Num. Iterations       : "
+           << fluidParams[scale].numIterations
            << std::endl;
   }
 
@@ -465,11 +464,11 @@ int main(int argc, char **argv)
     images[i] = new Image<VoxelType>;
     ApplicationUtils::LoadImageITK(inputFilenames[i].c_str(), *images[i]);
     appout << "   Loaded: " << inputFilenames[i] << std::endl;
-    appout << "   Dimensions: " << images[i]->getSize() 
+    appout << "   Dimensions: " << images[i]->getSize()
            << std::endl;
-    appout << "   Origin: " << images[i]->getOrigin() 
+    appout << "   Origin: " << images[i]->getOrigin()
            << std::endl;
-    appout << "   Spacing: " << images[i]->getSpacing() 
+    appout << "   Spacing: " << images[i]->getSpacing()
            << std::endl;
     VoxelType iMin, iMax;
     Array3DUtils::getMinMax(*images[i], iMin, iMax);
@@ -484,16 +483,16 @@ int main(int argc, char **argv)
     appout << "DONE" << std::endl;
     Array3DUtils::getMinMax(*images[i], iMin, iMax);
     appout << "   Intensity Range: " << iMin << "-" << iMax << std::endl;
-  }  
+  }
 
 
 	//
-	//load hfield
+	//load constraining hfield
 	//
     Array3D< Vector3D<float> > * inputHField = NULL;
 	if(inputHFieldFileName != "")
 	{
-    appout <<"Loading constraining Hfield.." << std::endl;
+    appout <<"Loading constraining(predicted) Hfield.." << std::endl;
     inputHField = new Array3D< Vector3D<float> >;
     Vector3D<unsigned int> hSize;
     Vector3D<double> hOrigin, hSpacing;
@@ -503,13 +502,16 @@ int main(int argc, char **argv)
 		appout  << " Dimensions: " << hSize << std::endl;
 		appout  << " Origin    : " << hOrigin << std::endl;
 		appout  << " Spacing   : " << hSpacing << std::endl;
+	}
+  else
+  {
+    appout<<"no input  hfield constraint is provided";
 
-	}
-	}
+  }
   //
   // setup FluidWarp class
   //
-  FluidWarp fluidWarper;
+  ConstrainedFluidWarp fluidWarper;
   fluidWarper.setFFTWMeasure(fftwMeasure);
   fluidWarper.setFFTWNumberOfThreads(fftwNumberOfThreads);
 
@@ -519,7 +521,7 @@ int main(int argc, char **argv)
     fluidWarper.setOutputMode(FluidWarp::FW_OUTPUT_MODE_VERBOSE);
     break;
   default:
-    fluidWarper.setOutputMode(FluidWarp::FW_OUTPUT_MODE_NORMAL);      
+    fluidWarper.setOutputMode(FluidWarp::FW_OUTPUT_MODE_NORMAL);
   }
   if (extraOutputStride > 0) {
     fluidWarper.setFilePrefix(outputImageFilenamePrefix.c_str());
@@ -541,16 +543,17 @@ int main(int argc, char **argv)
       fluidWarper.setZSlice(writeZSlice);
     }
   }
-  
+
   //
   // deform image at each scale level
   //
   Image<VoxelType>** scaledImages = new Image<VoxelType>*[numImages];
+	ConstrainedFluidWarp::VectorFieldType ** scaledInputHFields = new ConstrainedFluidWarp::VectorFieldType * [numImages];
   Array3D<Vector3D<float> >** h    = new Array3D<Vector3D<float> >*[numImages];
   Array3D<Vector3D<float> >** hinv = 0;
   if (writeInverseHFields)
   {
-    hinv = new Array3D<Vector3D<float> >*[numImages];  
+    hinv = new Array3D<Vector3D<float> >*[numImages];
   }
   Vector3D<float> origin, spacing;
   origin = images[0]->getOrigin();
@@ -573,6 +576,7 @@ int main(int argc, char **argv)
     {
       if (f == 1) {
         scaledImages[i] = new Image<VoxelType>(*images[i]);
+				scaledInputHFields[i] = new ConstrainedFluidWarp::VectorFieldType (*inputHFields[i]); 
       }
       else {
         scaledImages[i] = new Image<VoxelType>;
@@ -581,11 +585,17 @@ int main(int argc, char **argv)
                                        Vector3D<int>(f, f, f),
                                        Vector3D<double>(f, f, f),
                                        Vector3D<int>(2*f, 2*f, 2*f));
+				appout << "InputHFields Downsampling...";
+
+				Vector3D<unsigned int> scaledImageSize = scaledImages[i]->getSize();
+				scaledInputHFields[i] = new ConstrainedFluidWarp::VectorFieldType(scaledImageSize);
+
+				HField3DUtils::resample(*inputHFields[i], *scaledInputHFields[i], scaledImageSize);
       }
     }
     Vector3D<unsigned int> scaledImageSize = scaledImages[0]->getSize();
     spacing = scaledImages[0]->getSpacing();
-    appout << "DONE, size = " << scaledImageSize 
+    appout << "DONE, size = " << scaledImageSize
            << ", spacing = " << spacing
            << std::endl;
 
@@ -603,7 +613,7 @@ int main(int argc, char **argv)
         if (hinv)
         {
           hinv[0] = new Array3D<Vector3D<float> >(scaledImageSize);
-          HField3DUtils::setToIdentity(*hinv[0]);            
+          HField3DUtils::setToIdentity(*hinv[0]);
         }
       } catch (std::exception& e)
       {
@@ -622,7 +632,45 @@ int main(int argc, char **argv)
       if (hinv)
       {
         tmph = *hinv[0];
-        HField3DUtils::resample(tmph, *hinv[0], scaledImageSize);          
+        HField3DUtils::resample(tmph, *hinv[0], scaledImageSize);
+      }
+    }
+    appout << "DONE" << std::endl;
+
+    //
+    // create input hfield for this scale level
+    //
+    appout << "Creating scaled input  h-fields...";
+    if (scale == 0)
+    {
+      // start with identity
+      try {
+        h[0] = new Array3D<Vector3D<float> >(scaledImageSize);
+        HField3DUtils::setToIdentity(*h[0]);
+
+        if (hinv)
+        {
+          hinv[0] = new Array3D<Vector3D<float> >(scaledImageSize);
+          HField3DUtils::setToIdentity(*hinv[0]);
+        }
+      } catch (std::exception& e)
+      {
+        appout << "Error creating h-field: " << e.what() << std::endl;
+        exit(0);
+      }
+    }
+    else
+    {
+      appout << "Upsampling...";
+      // upsample old xforms
+      Array3D<Vector3D<float> > tmph(h[0]->getSize());
+      tmph = *h[0];
+      HField3DUtils::resample(tmph, *h[0], scaledImageSize);
+
+      if (hinv)
+      {
+        tmph = *hinv[0];
+        HField3DUtils::resample(tmph, *hinv[0], scaledImageSize);
       }
     }
     appout << "DONE" << std::endl;
@@ -642,16 +690,20 @@ int main(int argc, char **argv)
       fluidWarper.
         computeHFieldAsymmetric(*scaledImages[0],
                                 *scaledImages[1],
-                                fluidParams[scale], 
-                                *h[0], *hinv[0]);      
+                                *scaledInputHfields[0],
+                                *scaledInputHfields[1],
+                                fluidParams[scale],
+                                *h[0], *hinv[0]);
     }
     else
     {
       fluidWarper.
         computeHFieldAsymmetric(*scaledImages[0],
                                 *scaledImages[1],
-                                fluidParams[scale], 
-                                *h[0]);      
+                                *scaledInputHfields[0],
+                                *scaledInputHfields[1],
+                                fluidParams[scale],
+                                *h[0]);
     }
     appout << "DONE Computing deformation." << std::endl;
 
@@ -676,28 +728,28 @@ int main(int argc, char **argv)
     for (int i = 0; i < (int) numImages; ++i)
     {
       delete scaledImages[i];
-    }          
+    }
   }
 
   //
   // write h field at last scale level
   //
-  if (outputHFieldFilenamePrefix != "") 
+  if (outputHFieldFilenamePrefix != "")
   {
     std::stringstream ss;
     ss << outputHFieldFilenamePrefix;
     appout << "Writing H Field...";
     HField3DIO::writeMETA(*h[0], origin, spacing, ss.str().c_str());
-    appout << "DONE" << std::endl;      
+    appout << "DONE" << std::endl;
 
-    if (writeInverseHFields) 
+    if (writeInverseHFields)
     {
       std::stringstream ss;
       ss << outputHFieldFilenamePrefix << "_inv";
       appout << "Writing inverse H Field...";
       HField3DIO::writeMETA(*hinv[0], origin, spacing, ss.str().c_str());
-      appout << "DONE" << std::endl;      
-    }    
+      appout << "DONE" << std::endl;
+    }
   }
 
   //
@@ -716,6 +768,7 @@ int main(int argc, char **argv)
   }
   delete [] scaledImages;
   delete [] images;
+  delete [] scaledInputHfields;
   return 0;
 }
 

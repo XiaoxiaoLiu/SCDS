@@ -262,7 +262,7 @@ void
 FluidWarp
 ::shrinkRegion(const ImageType& image,
 	      Parameters& parameters,
-	       VectorField& h,
+	       VectorFieldType& h,
 	       bool shrinkLightRegions)
 {
   _shrinkRegion(image, parameters, &h, 0, shrinkLightRegions);
@@ -272,8 +272,8 @@ void
 FluidWarp
 ::shrinkRegion(const ImageType& image,
 	      Parameters& parameters,
-	       VectorField& h,
-	       VectorField& hinv,
+	       VectorFieldType& h,
+	       VectorFieldType& hinv,
 	       bool shrinkLightRegions)
 {
   _shrinkRegion(image, parameters, &h, &hinv, shrinkLightRegions);
@@ -283,8 +283,8 @@ void
 FluidWarp
 ::_shrinkRegion(const ImageType& moving,
 		Parameters& parameters,
-		VectorField* h,
-		VectorField* hinv,
+		VectorFieldType* h,
+		VectorFieldType* hinv,
 		bool shrinkLightRegions)
 {
   Timer totalTimer;
@@ -322,11 +322,11 @@ FluidWarp
   // and not via incremented pointers.  I REPEAT, don't access the vector
   // field via incremented pointers unless you *know* what you are doing.
   unsigned xSizeFFT = 2 * (imageSize.x / 2 + 1);
-  VectorField vf(xSizeFFT, imageSize.y, imageSize.z);
+  VectorFieldType vf(xSizeFFT, imageSize.y, imageSize.z);
 
   // allocate deformed image (I(hk(x)))
   ImageType def(imageSize);
-  //VectorField hhinv(imageSize);
+  //VectorFieldType hhinv(imageSize);
   _stopTime();
 
   //
@@ -531,7 +531,7 @@ void
 FluidWarp
 ::shrinkRegionForward(const ImageType& image,
                      Parameters& parameters,
-                      VectorField& h,
+                      VectorFieldType& h,
                       bool shrinkLightRegions)
 {
   _shrinkRegionForward(image, parameters, &h, 
@@ -542,7 +542,7 @@ void
 FluidWarp
 ::_shrinkRegionForward(const ImageType& moving,
                       Parameters& parameters,
-                       VectorField* h,
+                       VectorFieldType* h,
                        bool shrinkLightRegions)
 {
   Timer totalTimer;
@@ -575,7 +575,7 @@ FluidWarp
   // and not via incremented pointers.  I REPEAT, don't access the vector
   // field via incremented pointers unless you *know* what you are doing.
   unsigned xSizeFFT = 2 * (imageSize.x / 2 + 1);
-  VectorField vf(xSizeFFT, imageSize.y, imageSize.z);
+  VectorFieldType vf(xSizeFFT, imageSize.y, imageSize.z);
 
   ImageType def(moving);
   _stopTime();
@@ -773,7 +773,7 @@ FluidWarp
 ::elasticShrinkRegionWithMask(const ImageType& image,
 	      Parameters& parameters,
          MaskType& mask,
-	       VectorField& h,
+	       VectorFieldType& h,
 	       bool shrinkLightRegions)
 {
   _elasticShrinkRegionWithMask(image,  parameters,mask, &h);
@@ -784,7 +784,7 @@ FluidWarp
 ::_elasticShrinkRegionWithMask(const ImageType& moving,
 		Parameters& parameters,
     MaskType& mask,
-		VectorField* h,
+		VectorFieldType* h,
 		bool shrinkLightRegions)
 {
   Timer totalTimer;
@@ -806,11 +806,11 @@ FluidWarp
 
 
   // allocate deformed image (def Image - fixed Image)
-  VectorField tmp(imageSize);
+  VectorFieldType tmp(imageSize);
   // allocate deformed image (I(dk(x)))
   ImageType def(imageSize);
   // allocate laplacian of the displacement  laplacian(dk(x))
-  VectorField laplacianD(imageSize);
+  VectorFieldType laplacianD(imageSize);
   _stopTime();
 
 
@@ -916,7 +916,7 @@ FluidWarp
 ::computeHFieldAsymmetric(const ImageType& fixed,
 			  const ImageType& moving,
 			Parameters& parameters,
-			  VectorField& h)
+			  VectorFieldType& h)
 {
   _computeHFieldAsymmetric(fixed, moving, parameters, &h, 0);
 }
@@ -926,8 +926,8 @@ FluidWarp
 ::computeHFieldAsymmetric(const ImageType& fixed,
 			  const ImageType& moving,
 			  Parameters& parameters,
-			  VectorField& h,
-			  VectorField& hinv)
+			  VectorFieldType& h,
+			  VectorFieldType& hinv)
 {
   _computeHFieldAsymmetric(fixed, moving, parameters, &h, &hinv);
 }
@@ -937,8 +937,8 @@ FluidWarp
 ::_computeHFieldAsymmetric(const ImageType& fixed,
 			   const ImageType& moving,
 			    Parameters& parameters,
-			   VectorField* h,
-			   VectorField* hinv)
+			   VectorFieldType* h,
+			   VectorFieldType* hinv)
 {
   if (parameters.numIterations == 0)
     {
@@ -986,11 +986,11 @@ FluidWarp
   // and not via incremented pointers.  I REPEAT, don't access the vector
   // field via incremented pointers unless you *know* what you are doing.
   unsigned xSizeFFT = 2 * (imageSize.x / 2 + 1);
-  VectorField vf(xSizeFFT, imageSize.y, imageSize.z);
+  VectorFieldType vf(xSizeFFT, imageSize.y, imageSize.z);
 
   // allocate deformed image (I(hk(x)))
   ImageType def(imageSize);
-  //VectorField hhinv(imageSize);
+  //VectorFieldType hhinv(imageSize);
   _stopTime();
 
   //
@@ -1230,7 +1230,7 @@ FluidWarp
 ::computeHFieldElastic(const ImageType& fixed,
 			  const ImageType& moving,
 			 Parameters& parameters,
-			  VectorField& h)
+			  VectorFieldType& h)
 {
   _computeHFieldElastic(fixed, moving, parameters, &h);
 }
@@ -1240,7 +1240,7 @@ FluidWarp
 ::_computeHFieldElastic(const ImageType& fixed,
                         const ImageType& moving,
                        Parameters& parameters,
-                        VectorField* h)
+                        VectorFieldType* h)
 {
   Timer totalTimer;
   totalTimer.start();
@@ -1265,11 +1265,11 @@ FluidWarp
   _time("allocating memory...");
 
   // allocate deformed image (def Image - fixed Image)
-  VectorField tmp(imageSize);
+  VectorFieldType tmp(imageSize);
   // allocate deformed image (I(dk(x)))
   ImageType def(imageSize);
   // allocate laplacian of the displacement  laplacian(dk(x))
-  VectorField laplacianD(imageSize);
+  VectorFieldType laplacianD(imageSize);
 
 
 
@@ -1373,7 +1373,7 @@ FluidWarp
 			  const ImageType& moving,
         MaskType& mask,
 			 Parameters& parameters,
-			  VectorField& h)
+			  VectorFieldType& h)
 {
   _computeHFieldElasticWithMask(fixed, moving, mask, parameters, &h);
 }
@@ -1384,7 +1384,7 @@ FluidWarp
                         const ImageType& moving,
                         MaskType& mask,
                        Parameters& parameters,
-                        VectorField* h)
+                        VectorFieldType* h)
 {
   Timer totalTimer;
    totalTimer.start();
@@ -1409,11 +1409,11 @@ FluidWarp
   _time("allocating memory...");
 
   // allocate deformed image (def Image - fixed Image)
-  VectorField tmp(imageSize);
+  VectorFieldType tmp(imageSize);
   // allocate deformed image (I(dk(x)))
   ImageType def(imageSize);
   // allocate laplacian of the displacement  laplacian(dk(x))
-  VectorField laplacianD(imageSize);
+  VectorFieldType laplacianD(imageSize);
 
 
 
@@ -1527,8 +1527,8 @@ FluidWarp
 ::computeHField2Symmetric(const ImageType& i1,
 			  const ImageType& i2,
 			 Parameters& parameters,
-			  VectorField& h1,
-			  VectorField& h2)
+			  VectorFieldType& h1,
+			  VectorFieldType& h2)
 {
   _computeHField2Symmetric(i1, i2, parameters, &h1, &h2, 0, 0);
 }
@@ -1538,10 +1538,10 @@ FluidWarp
 ::computeHField2Symmetric(const ImageType& i1,
 			  const ImageType& i2,
 			 Parameters& parameters,
-			  VectorField& h1,
-			  VectorField& h2,
-			  VectorField& h1inv,
-			  VectorField& h2inv)
+			  VectorFieldType& h1,
+			  VectorFieldType& h2,
+			  VectorFieldType& h1inv,
+			  VectorFieldType& h2inv)
 {
   _computeHField2Symmetric(i1, i2, parameters, &h1, &h2, &h1inv, &h2inv);
 }
@@ -1551,10 +1551,10 @@ FluidWarp
 ::_computeHField2Symmetric(const ImageType& i1,
 			   const ImageType& i2,
 			  Parameters& parameters,
-			   VectorField* h1,
-			   VectorField* h2,
-			   VectorField* h1inv,
-			   VectorField* h2inv)
+			   VectorFieldType* h1,
+			   VectorFieldType* h2,
+			   VectorFieldType* h1inv,
+			   VectorFieldType* h2inv)
 {
   Timer totalTimer;
   totalTimer.start();
@@ -1608,14 +1608,14 @@ FluidWarp
   // and not via incremented pointers.  I REPEAT, dont access the vector
   // field via incremented pointers unless you *know* what you are doing.
   unsigned xSizeFFT = 2 * (imageSize.x / 2 + 1);
-  VectorField vf1(xSizeFFT, imageSize.y, imageSize.z);
-  VectorField vf2(xSizeFFT, imageSize.y, imageSize.z);
+  VectorFieldType vf1(xSizeFFT, imageSize.y, imageSize.z);
+  VectorFieldType vf2(xSizeFFT, imageSize.y, imageSize.z);
 
   // allocate deformed image (Ii(hik(x))) and average image (Ihat)
   ImageType def1(imageSize);
   ImageType def2(imageSize);
-  VectorField h1h1inv(imageSize);
-  VectorField h2h2inv(imageSize);
+  VectorFieldType h1h1inv(imageSize);
+  VectorFieldType h2h2inv(imageSize);
   _stopTime();
 
   //
@@ -1754,7 +1754,7 @@ FluidWarp
 			  const ImageType** images,
 			 Parameters& parameters,
 			  ImageType& iHat,
-			  VectorField** h)
+			  VectorFieldType** h)
 {
   _computeHFieldNSymmetric(numImages, images, 0, parameters, iHat, h, 0);
 }
@@ -1766,7 +1766,7 @@ FluidWarp
                           const double* imageWeights,
 			 Parameters& parameters,
 			  ImageType& iHat,
-			  VectorField** h)
+			  VectorFieldType** h)
 {
   _computeHFieldNSymmetric(numImages, images, imageWeights, 
                            parameters, iHat, h, 0);
@@ -1778,8 +1778,8 @@ FluidWarp
 			  const ImageType** images,
 			 Parameters& parameters,
 			  ImageType& iHat,
-			  VectorField** h,
-			  VectorField** hinv)
+			  VectorFieldType** h,
+			  VectorFieldType** hinv)
 {
   _computeHFieldNSymmetric(numImages, images, 0, parameters, iHat, h, hinv);
 }
@@ -1791,8 +1791,8 @@ FluidWarp
                           const double* imageWeights,
 		      Parameters& parameters,
 			  ImageType& iHat,
-			  VectorField** h,
-			  VectorField** hinv)
+			  VectorFieldType** h,
+			  VectorFieldType** hinv)
 {
   _computeHFieldNSymmetric(numImages, images, imageWeights, 
                            parameters, iHat, h, hinv);
@@ -1805,8 +1805,8 @@ FluidWarp
                            const double* imageWeights,
 			   Parameters& parameters,
 			   ImageType& iHat,
-			   VectorField** h,
-			   VectorField** hinv)
+			   VectorFieldType** h,
+			   VectorFieldType** hinv)
 {
   if (numImages == 0) return;
 
@@ -1856,7 +1856,7 @@ FluidWarp
   // and not via incremented pointers.  I REPEAT, dont access the vector
   // field via incremented pointers unless you *know* what you are doing.
   unsigned xSizeFFT = 2 * (imageSize.x / 2 + 1);
-  VectorField vf(xSizeFFT, imageSize.y, imageSize.z);
+  VectorFieldType vf(xSizeFFT, imageSize.y, imageSize.z);
 
   // allocate deformed image (Ii(hik(x))) and average image (Ihat)
   ImageType** def = new ImageType*[numImages];
@@ -2099,7 +2099,7 @@ void
 FluidWarp
 ::_generateBodyForceJacobianScale(const ImageType& fixed,
                      const ImageType& def,
-                     VectorField& gradToBodyForce,
+                     VectorFieldType& gradToBodyForce,
                      double& squaredError)
 {
     Vector3D<unsigned int> size = fixed.getSize();
@@ -2141,7 +2141,7 @@ void
 FluidWarp
 ::_generateBodyForce(const ImageType& fixed,
                      const ImageType& def,
-                     VectorField& gradToBodyForce,
+                     VectorFieldType& gradToBodyForce,
                      double& squaredError)
 {
 
@@ -2171,8 +2171,8 @@ void
 FluidWarp
 ::_generateBodyForce(const ImageType& def1,
 		     const ImageType& def2,
-		     VectorField& grad1ToBodyForce1,
-		     VectorField& grad2ToBodyForce2,
+		     VectorFieldType& grad1ToBodyForce1,
+		     VectorFieldType& grad2ToBodyForce2,
 		     double& squaredError)
 {
   Vector3D<unsigned int> size = def1.getSize();
@@ -2196,7 +2196,7 @@ FluidWarp
 
 void 
 FluidWarp
-::_computeVelocityField(VectorField& bodyForceToVelocity,
+::_computeVelocityField(VectorFieldType& bodyForceToVelocity,
 			const Vector3D<unsigned int>& logicalSize,
 		    Parameters & parameters,
 			const LUT& lut,
@@ -2270,7 +2270,7 @@ FluidWarp
 
 double 
 FluidWarp
-::_computeDelta(const VectorField& v,
+::_computeDelta(const VectorFieldType& v,
                 const Vector3D<unsigned int>& logicalSize,
                 const double& maxPerturbation)
 {
@@ -2317,8 +2317,8 @@ FluidWarp
 //
 void 
 FluidWarp
-::_updateHField(VectorField& h,
-		VectorField& velocity,
+::_updateHField(VectorFieldType& h,
+		VectorFieldType& velocity,
 		const float& delta)
 {
   Vector3D<unsigned int> size = h.getSize();
@@ -2371,9 +2371,9 @@ FluidWarp
 //
 void 
 FluidWarp
-::_updateHField(VectorField& h,
-		VectorField& hinv,
-		VectorField& velocity,
+::_updateHField(VectorFieldType& h,
+		VectorFieldType& hinv,
+		VectorFieldType& velocity,
 		const float& delta)
 {
   Vector3D<unsigned int> size = h.getSize();
@@ -2381,7 +2381,7 @@ FluidWarp
   //
   // compute hIncremental(x) = x + velocity(x) * delta
   //
-  VectorField hIncremental(size);
+  VectorFieldType hIncremental(size);
   unsigned int z; // stupid microsoft
   for (z = 0; z < size.z; ++z) {
     for (unsigned int y = 0; y < size.y; ++y) {
@@ -2396,14 +2396,14 @@ FluidWarp
   //
   // compute h(x) = h(hIncremental(x))
   //
-  VectorField oldH(h);
+  VectorFieldType oldH(h);
   HField3DUtils::compose(oldH, hIncremental, h);
 
   //
   // compute 
   // hIncrementalInv(x) = x + x - hIncremental(x)
   //
-  VectorField& hIncrementalInv = oldH; // reuse memory here
+  VectorFieldType& hIncrementalInv = oldH; // reuse memory here
   HField3DUtils::computeInverseZerothOrder(hIncremental, hIncrementalInv);
 
   //
@@ -2420,9 +2420,9 @@ FluidWarp
 //
 void 
 FluidWarp
-::_updateHFieldElastic(VectorField& h,
-		VectorField& bodyForce,
-    VectorField& laplacian,
+::_updateHFieldElastic(VectorFieldType& h,
+		VectorFieldType& bodyForce,
+    VectorFieldType& laplacian,
     const float& alpha,
 		const float& delta)
 {
@@ -2450,10 +2450,10 @@ FluidWarp
 //
 void 
 FluidWarp
-::_updateHFieldElasticWithMask(VectorField& h,
-		VectorField& bodyForce,
+::_updateHFieldElasticWithMask(VectorFieldType& h,
+		VectorFieldType& bodyForce,
     MaskType& mask,
-    VectorField& laplacian,
+    VectorFieldType& laplacian,
     const float& alpha,
 		const float& delta)
 {
@@ -2486,7 +2486,7 @@ FluidWarp
 
 void 
 FluidWarp
-::_createFFTWPlans(VectorField& v,
+::_createFFTWPlans(VectorFieldType& v,
 		   const Vector3D<unsigned int>& logicalSize,
 		   fftwf_plan& fftwForwardPlan,
 		   fftwf_plan& fftwBackwardPlan)
@@ -2806,8 +2806,8 @@ FluidWarp
 			 double rmsError,
 			 const ImageType& deformedImage, 
 			 const ImageType& atlas, 
-			 const VectorField& h,
-			 const VectorField& hinv)
+			 const VectorFieldType& h,
+			 const VectorFieldType& hinv)
 {
   //Write log for each iteration
   if (_writeLogFile)

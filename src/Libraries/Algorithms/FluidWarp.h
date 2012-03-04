@@ -23,7 +23,7 @@ public:
   typedef float                                  VoxelType;
   typedef float                                  CoordinateType;
   typedef Array3D<VoxelType>                     ImageType;
-  typedef Array3D<Vector3D<CoordinateType> >     VectorField;
+  typedef Array3D<Vector3D<CoordinateType> >     VectorFieldType;
   typedef Array3D<float>                         MaskType;
 
   enum OutputMode {FW_OUTPUT_MODE_NORMAL, 
@@ -90,90 +90,90 @@ public:
 
   void shrinkRegion(const ImageType& image,
 		   Parameters& parameters,
-		    VectorField& h,
+		    VectorFieldType& h,
 		    bool shrinkLightRegions = false);
 
   void shrinkRegion(const ImageType& image,
 		   Parameters& parameters,
-		    VectorField& h,
-		    VectorField& hinv,
+		    VectorFieldType& h,
+		    VectorFieldType& hinv,
 		    bool shrinkLightRegions = false);
 
   void elasticShrinkRegionWithMask(const ImageType& image,
                                   Parameters& parameters,
                                    MaskType& mask,
-                                   VectorField& h,
+                                   VectorFieldType& h,
                                    bool shrinkLightRegions = true);
 
   void shrinkRegionForward(const ImageType& image,
                           Parameters& parameters,
-                           VectorField& h,
+                           VectorFieldType& h,
                            bool shrinkLightRegions = false);
 
   void computeHFieldAsymmetric(const ImageType& fixed,
 			       const ImageType& moving,
 			      Parameters& parameters,
-			       VectorField& h);
+			       VectorFieldType& h);
   
   void computeHFieldAsymmetric(const ImageType& fixed,
 			       const ImageType& moving,
 			      Parameters& parameters,
-			       VectorField& h,
-			       VectorField& hinv);
+			       VectorFieldType& h,
+			       VectorFieldType& hinv);
 
   void computeHFieldElastic(const ImageType& fixed,
                             const ImageType& moving,
                            Parameters& parameters,
-                            VectorField& h);
+                            VectorFieldType& h);
   
 
   void computeHFieldElasticWithMask(const ImageType& fixed,
                                     const ImageType& moving,
                                     MaskType& mask,
                                    Parameters& parameters,
-                                    VectorField& h);
+                                    VectorFieldType& h);
 
   void computeHField2Symmetric(const ImageType& i1,
 			       const ImageType& i2,
 			      Parameters& parameters,
-			       VectorField& h1,
-			       VectorField& h2);
+			       VectorFieldType& h1,
+			       VectorFieldType& h2);
 
   void computeHField2Symmetric(const ImageType& i1,
 			       const ImageType& i2,
 			      Parameters& parameters,
-			       VectorField& h1,
-			       VectorField& h2,
-			       VectorField& h1inv,
-			       VectorField& h2inv);
+			       VectorFieldType& h1,
+			       VectorFieldType& h2,
+			       VectorFieldType& h1inv,
+			       VectorFieldType& h2inv);
 
   void computeHFieldNSymmetric(unsigned int numImages,
 			       const ImageType** images,
 			      Parameters& parameters,
 			       ImageType& iHat,
-			       VectorField** h);
+			       VectorFieldType** h);
 
   void computeHFieldNSymmetric(unsigned int numImages,
 			       const ImageType** images,
                                const double* imageWeights,
 			      Parameters& parameters,
 			       ImageType& iHat,
-			       VectorField** h);
+			       VectorFieldType** h);
 
   void computeHFieldNSymmetric(unsigned int numImages,
 			       const ImageType** images,
 			      Parameters& parameters,
 			       ImageType& iHat,
-			       VectorField** h,
-			       VectorField** hinv);
+			       VectorFieldType** h,
+			       VectorFieldType** hinv);
 
   void computeHFieldNSymmetric(unsigned int numImages,
 			       const ImageType** images,
                                const double* imageWeights,
 			      Parameters& parameters,
 			       ImageType& iHat,
-			       VectorField** h,
-			       VectorField** hinv);
+			       VectorFieldType** h,
+			       VectorFieldType** hinv);
   
 private:
   bool _updateAverageAfterEverySubIteration;
@@ -239,105 +239,105 @@ private:
 
   void _shrinkRegion(const ImageType& moving,
 		    Parameters& parameters,
-		     VectorField* h,
-		     VectorField* hinv,
+		     VectorFieldType* h,
+		     VectorFieldType* hinv,
 		     bool shrinkLightRegions = true);
 
   void _shrinkRegionForward(const ImageType& moving,
                            Parameters& parameters,
-                            VectorField* h,
+                            VectorFieldType* h,
                             bool shrinkLightRegions = true);
 
   void _elasticShrinkRegionWithMask(const ImageType& moving,
                                    Parameters& parameters,
                                     MaskType& mask,
-                                    VectorField* h,
+                                    VectorFieldType* h,
                                     bool shrinkLightRegions = true);
 
   void _computeHFieldAsymmetric(const ImageType& fixed,
 				const ImageType& moving,
 				Parameters& params,
-				VectorField* h,
-				VectorField* hinv);
+				VectorFieldType* h,
+				VectorFieldType* hinv);
 
   void _computeHFieldElastic(const ImageType& fixed,
 				const ImageType& moving,
 				Parameters& params,
-				VectorField* h);
+				VectorFieldType* h);
 
   void _computeHFieldElasticWithMask(const ImageType& fixed,
 				const ImageType& moving,
         MaskType& mask,
 				Parameters& params,
-				VectorField* h);
+				VectorFieldType* h);
 
   void _computeHField2Symmetric(const ImageType& i1,
 				const ImageType& i2,
 				Parameters& parameters,
-				VectorField* h1,
-				VectorField* h2,
-				VectorField* h1inv,
-				VectorField* h2inv);
+				VectorFieldType* h1,
+				VectorFieldType* h2,
+				VectorFieldType* h1inv,
+				VectorFieldType* h2inv);
 
   void _computeHFieldNSymmetric(unsigned int numImages,
 				const ImageType** image,
                                 const double* imageWeights,
 			   Parameters& parameters,
 				ImageType& iHat,
-				VectorField** h,
-				VectorField** hinv);
+				VectorFieldType** h,
+				VectorFieldType** hinv);
 
   // asymmetric
   static void _generateBodyForce(const ImageType& fixed,
 				 const ImageType& def,
-				 VectorField& grad,
+				 VectorFieldType& grad,
 				 double& squaredError);
  // asymetric with Jacobian Scale 
   static void _generateBodyForceJacobianScale(const ImageType& fixed,
 				 const ImageType& def,
-				 VectorField& grad,
+				 VectorFieldType& grad,
 				 double& squaredError);
   // symmetric
   static void _generateBodyForce(const ImageType& def1,
 				 const ImageType& def2,
-				 VectorField& grad1,
-				 VectorField& grad2,
+				 VectorFieldType& grad1,
+				 VectorFieldType& grad2,
 				 double& squaredError);
 
-  static void _computeVelocityField(VectorField& v,
+  static void _computeVelocityField(VectorFieldType& v,
 				    const Vector3D<unsigned int>& logicalSize,
 				   Parameters& params,
 				    const LUT& lut,
 				    fftwf_plan& fftwForwardPlan,
 				    fftwf_plan& fftwBackwardPlan);
 
-  double _computeDelta(const VectorField& v,
+  double _computeDelta(const VectorFieldType& v,
 		       const Vector3D<unsigned int>& logicalSize,
 		       const double& maxPerturbation);
 
-  static void _updateHField(VectorField& h,
-			    VectorField& v,
+  static void _updateHField(VectorFieldType& h,
+			    VectorFieldType& v,
 			    const CoordinateType& delta);
 
-  static void _updateHField(VectorField& h,
-			    VectorField& hinv,
-			    VectorField& v,
+  static void _updateHField(VectorFieldType& h,
+			    VectorFieldType& hinv,
+			    VectorFieldType& v,
 			    const CoordinateType& delta);
 
-  static void _updateHFieldElastic(VectorField& h,
-			    VectorField& b,
-          VectorField& l,
+  static void _updateHFieldElastic(VectorFieldType& h,
+			    VectorFieldType& b,
+          VectorFieldType& l,
           const CoordinateType& alpha,
 			    const CoordinateType& delta);
 
-  static void _updateHFieldElasticWithMask(VectorField& h,
-			    VectorField& b,
+  static void _updateHFieldElasticWithMask(VectorFieldType& h,
+			    VectorFieldType& b,
           MaskType& m,
-          VectorField& l,
+          VectorFieldType& l,
           const CoordinateType& alpha,
 			    const CoordinateType& delta);
 
-  void _createFFTWPlans(VectorField& v,
+  void _createFFTWPlans(VectorFieldType& v,
                         const Vector3D<unsigned int>& logicalSize,
                         fftwf_plan& fftwForwardPlan,
                         fftwf_plan& fftwBackwardPlan);
@@ -372,8 +372,8 @@ private:
 			      double rmsError,
 			      const ImageType& deformedImage, 
 			      const ImageType& atlas, 
-			      const VectorField& h,
-				  const VectorField& hinv);
+			      const VectorFieldType& h,
+				  const VectorFieldType& hinv);
 
 //
 // convert an int in [0,999] to a 3 digit right justified string
