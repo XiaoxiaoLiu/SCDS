@@ -175,7 +175,8 @@ public:
 			       VectorFieldType** h,
 			       VectorFieldType** hinv);
   
-private:
+//private:
+protected:
   bool _updateAverageAfterEverySubIteration;
   
   //

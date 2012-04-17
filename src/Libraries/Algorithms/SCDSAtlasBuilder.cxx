@@ -94,9 +94,7 @@ SetNthInputCompHField(unsigned int n, VectorFieldType* CompHFieldPointer )
 }
 
 void
-SCDSAtlasBuilder::
-UpdateError()
-{
+SCDSAtlasBuilder:: UpdateError() {
 	unsigned int numElements = this->_AverageImagePointer->getNumElements();
 	double MSE = 0;
 	double DVFSquareError=0;
@@ -160,9 +158,7 @@ LogIterationData(unsigned int imageNumber,  int threadID, double iterationTime)
 			this->_MaxL2Displacements.end());
 	newData.DVFSquareError = this->_DVFSquareError;
 	newData.RootMeanDVFSquareError =sqrt(this->_DVFSquareError);
-    newData.RootMeanCompDVFSquareError =sqrt(this->_CompDVFSquareError);
-	newData.DVFError = this->_DVFError;
-	newData.MaxDVFError = this->_MaxDVFError;
+    newData.RootMeanCompDVFSquareError =sqrt(this->_CompDVFSquareError); newData.DVFError = this->_DVFError; newData.MaxDVFError = this->_MaxDVFError;
 
 	double IntensityErrorPercent  = 100.0;
 	double DiffeoDisPercent = 100.0;
