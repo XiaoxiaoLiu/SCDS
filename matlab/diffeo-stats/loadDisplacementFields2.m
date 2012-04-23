@@ -29,8 +29,8 @@ s = size(h);
 
 h = h-eyeHField(s(2:4));
 
-H = zeros(length(fileNames), length(h(:)));
-H(1,:) = h(:)';
+H = single(zeros(length(fileNames), length(h(:))));
+H(1,:) =single( h(:)');
 
 
 for i = 2: length(fileNames)

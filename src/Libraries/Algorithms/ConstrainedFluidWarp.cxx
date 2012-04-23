@@ -397,6 +397,16 @@ ConstrainedFluidWarp
       }
     }
   }
+
+	//clean up
+	for (int i = 0; i < 3;++i)
+	{
+		delete tmpScratchVectorFieldPointer[i];
+		delete hFieldImages[i];
+	}
+
+	delete  []  tmpScratchVectorFieldPointer;
+	delete  [] hFieldImages;
 }
 
 

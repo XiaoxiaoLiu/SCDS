@@ -1,8 +1,11 @@
 function [ stats ] = pcaStats(P)
 %PURPOSE: Compute PCA statistics.
 
-[PCs,scores, LATENT]= princomp(P,'econ');
+%[PCs,scores, LATENT]= princomp(P,'econ');
+[PCs,LATENT,explained]=pca(P');
+scores = P*PCs;
 %num = 3;
+
 num = size(LATENT(:));
 %     for i = 1: size(LATENT(:))
 %         if sum(LATENT(1:i)./sum(LATENT)) > 0.9

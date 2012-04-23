@@ -103,5 +103,5 @@ headerSize = ftell(fid);
 
 [I,count] = fread(fid,prod(imSize)*numChannels,dataType);
 fclose(fid);
-I=squeeze(reshape(I,[numChannels imSize]));
+I=single(squeeze(reshape(I,[numChannels imSize])));
 

@@ -62,37 +62,32 @@ $scriptsFolder/intersectionRegionExtract_RCCT_CBCT.m
 
 
 ##############################   Training atlas  ################################################
-$scriptsFolder/atlasWerks.bash  Patient$patNo
+$scriptsFolder/fWarpCBCT.sh
 
 
 
 
 ############################   Predict CBCT deformations (DVFs) ##################################
-$scriptsFolder/run_predict_inter.m
+$scriptsFolder/run.......m
 
-
-#### get motion-corrected average image
 
 # apply the predicted deformation
-mkdir  $resultsFolder/SCDS_predict
-mkdir  $resultsFolder/SCDS_predict/deformedImage
-cd $resultsFolder/SCDS_predict/deformedImage
+mkdir  $resultsFolder/Diaphgram_predict/deformedImage
+cd $resultsFolder/Diaphgram_predict/deformedImage
 
-for n in 00 16 32 50 66 82
+for n in 00 16 32  66 82
 do
-	txApply -b -i $cbctFolder/image/gray-inter/phase$n.mhd -h $resultsFolder/SCDS_predict/Hfield/pred-hfield-phase$n.mhd  -o deformedPhase$n
+	$binaryFolder/txApply -b -i $cbctFolder/image/inter/phase$n.mhd -h $resultsFolder/Diaphgram_predict/Hfield/pred-hfield-phase$n.mhd  -o deformedPhase$n
 done
 
 
 # for comparison purpose: get the Euclidean mean
-AtlasWerks --outputImageFilenamePrefix=averageImage_  --scaleLevel=1 --numberOfIterations=0   *.mhd
+$binaryFolder/AtlasWerks --outputImageFilenamePrefix=averageImage_  --scaleLevel=1 --numberOfIterations=0   *.mhd
 
 
 
-### advanced ###
-############################  prediction-based atlas formation ##################################
 
-qsub $scriptsFolder/scdsWarp.bash Patient$patNo
+qsub $scriptsFolder/cfWarp.bash
 
 
 

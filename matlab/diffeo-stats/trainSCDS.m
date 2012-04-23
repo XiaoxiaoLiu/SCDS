@@ -45,9 +45,9 @@ end
    
 
 
-[stats_corr]= shapeDiffeo_CCA(stats_P.scores(:,1:PC_num_p),stats_H.scores(:,1:PC_num_h));
+%[stats_corr]= shapeDiffeo_CCA(stats_P.scores(:,1:PC_num_p),stats_H.scores(:,1:PC_num_h));
 
-%[stats_corr]= shapeDiffeo_MLR(stats_P.scores(:,1:PC_num_p),stats_H.scores(:,1:PC_num_h));%%%%%%%%%%????????????
+[stats_corr]= shapeDiffeo_MLR(stats_P.scores(:,1:PC_num_p),stats_H.scores(:,1:PC_num_h));%%%%%%%%%%????????????
 
 
 
