@@ -21,23 +21,22 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function intersectionRegionExtract_RCCT_CBCT(patNo)
 %% parameter settin
-patNo='02';
-patPath= ['/media/Xiaoxiao_Backup/proj/SCDS/MSKCC_DATA/445_pt101460',patNo];
+patNo='27';
+patPath= ['/media/Xiaoxiao_Backup/proj/SCDS/MSKCC_DATA/Pt',patNo];
 
-paramFileName=[patPath,'/g1i1gated_to_rcct2.txt'];
+paramFileName=[patPath,'/Pt27_rcct1_cbct1_all_ph_Jun_22_2012.txt'];
 
 
 params = readAlignmentParameters(paramFileName);
 
-CBCTLIST= [ 0 16 32 50 66 82];
+RCCTLIST= [ 05 15 25 35 45 55 65 75 85 95];
+CBCTLIST= [ 05 15 25 35 45 55 65 75 85 95];
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% folder setting
 
-mkdir( [patPath,'/cbct/image/inter']);
-mkdir( [patPath,'/rcct/image/inter']);
 mkdir( [patPath,'/cbct/image/align']);
 mkdir( [patPath,'/rcct/image/align']);
 
@@ -46,17 +45,16 @@ mkdir( [patPath,'/rcct/image/align']);
 
 % flip z of the rcct sequence, replacing the origin from the params.orig1
 orig1 = params.orig1;
-for num = [0:9]
-    
-    pad = sprintf('%d0',num);
-    
+for num = RCCTLIST
+    pad=sprintf('%02d',num);
     inputImFN=[ patPath,'/rcct/image/original/cinePhase',pad,'.mhd'];
     
     [imRCCT,tmp,spacing]= loadMETA(inputImFN);
     
-    imRCCT=flipdim(imRCCT,3);
+   %  imRCCT=flipdim(imRCCT,3); % depends on the data, sometimes, RCCT
+   %  needs to be fliped
     
-  %  oritentation='RAS';  %was RAI==flip z=> RAS
+    %% oritentation='RAS';  %was RAI==flip z=> RAS
     
     writeMETA(imRCCT, [patPath,'/rcct/image/align/cinePhase',pad,'.mhd'],'MET_FLOAT',orig1, spacing);
     
@@ -65,8 +63,10 @@ end
 
 
 
+
+
 %% align cbct according to the params
-refImFN1 = [ patPath,'/rcct/image/align/cinePhase50.mhd'];
+refImFN1 = [ patPath,'/rcct/image/align/cinePhase55.mhd'];
 for num = CBCTLIST
     
     pad=sprintf('%02d',num);
@@ -75,26 +75,33 @@ for num = CBCTLIST
     
     outputFileName=[patPath,'/cbct/image/align/phase',pad,'.mhd'];
     
-    alignToRefSet(refImFN1, inputImFileName, outputFileName, params);
+    alignToRefSet(refImFN1, inputImFileName, outputFileName, params, 0);
 end
 
 
 
 %% figure out the intersection region
-
-[dims2,orig2,spacing2]=readMetaHeader([patPath,'/cbct/image/align/phase50.mhd']);
-[dims1,orig1,spacing1]=readMetaHeader([patPath,'/rcct/image/align/cinePhase50.mhd']);
+mkdir( [patPath,'/cbct/image/inter']);
+mkdir( [patPath,'/rcct/image/inter']);
+[dims2,orig2,spacing2]=readMetaHeader([patPath,'/cbct/image/align/phase55.mhd']);
+[dims1,orig1,spacing1]=readMetaHeader([patPath,'/rcct/image/align/cinePhase55.mhd']);
 ROI_ul = max(orig1, orig2) ;
 ROI_lr = min(orig2 + dims2.*spacing2, orig1 + dims1.*spacing1);
 
-for num = [0:9]    
-    pad = sprintf('%d0',num);
+for num = RCCTLIST
+    pad = sprintf('%02d',num);
     
     inputImFN=[patPath,'/rcct/image/align/cinePhase',pad,'.mhd'];
     
     outputImFN=[patPath,'/rcct/image/inter/cinePhase',pad,'.mhd'];
     
     [roi_im]=extractROI_worldCorr(inputImFN, ROI_ul, ROI_lr,orig1);
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % flip and remove the 1-20 slices (rcct has black slices)
+    %roi_im = flipdim(roi_im,3);
+    %roi_im2 = roi_im(:,:,1:60);
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
     writeMETA(roi_im, outputImFN,'MET_FLOAT',ROI_ul, spacing1);
    
@@ -109,6 +116,12 @@ for num = CBCTLIST
     outputImFN=[patPath,'/cbct/image/inter/phase',pad,'.mhd'];
        
     [roi_im]=extractROI_worldCorr(inputImFN, ROI_ul, ROI_lr,orig2);
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %flip and remove the 1-20 slices (rcct has black slices)
+    %roi_im = flipdim(roi_im,3);
+    %roi_im2 = roi_im(:,:,1:60);
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
      writeMETA(roi_im, outputImFN,'MET_FLOAT',ROI_ul, spacing2);
    

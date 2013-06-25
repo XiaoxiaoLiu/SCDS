@@ -5,14 +5,14 @@
 
 echo "Setting parameters..."
 
-patNo=10146002;  ## patient number: 10146002
+patNo=Pt27;  ## patient number: 10146002
 
 ## default data storgage settings
 
 binaryFolder=/home/xiaoxiao/work/bin/SCDS/bin
 scriptsFolder=/home/xiaoxiao/work/src/SCDS/scripts/SCDS-cbct/diaphragmSCDS
 
-dataFolder=/media/Xiaoxiao_Backup/proj/SCDS/MSKCC_DATA/445_pt$patNo
+dataFolder=/media/Xiaoxiao_Backup/proj/SCDS/MSKCC_DATA/$patNo
 
 cbctFolder=$dataFolder/cbct
 rcctFolder=$dataFolder/rcct
@@ -25,18 +25,20 @@ echo " Training atlas RCCT ..."
 
 ##############    Training atlas RCCT      ###################
 mkdir $rcctFolder/largeWarp
-
-for i in 00 10 20 30 40 60 70 80 90
-  do $binaryFolder/fWarp  \
+for i in 05 15 25 35 45 65 75 85 95
+do $binaryFolder/fWarp  \
 --outputImageFilenamePrefix=$rcctFolder/largeWarp/deformed_cinePhase$i \
 --outputHFieldFilenamePrefix=$rcctFolder/largeWarp/hfield-cinePhase$i \
---scaleLevel=4 --numberOfIterations=200 \
---scaleLevel=2 --numberOfIterations=100 \
+--intensityWindowMin=-1024   --intensityWindowMax=1024   \
+--scaleLevel=4 --numberOfIterations=300 \
+--alpha=0.01  --beta=0.01  --gamma=0.001  \
+--scaleLevel=2 --numberOfIterations=200 \
+--alpha=0.01  --beta=0.01  --gamma=0.001  \
 --scaleLevel=1 --numberOfIterations=100 \
-$rcctImageFolder/inter/cinePhase50.mhd  \
+--alpha=0.01  --beta=0.01   --gamma=0.001  \
+$rcctImageFolder/inter/cinePhase55.mhd  \
 $rcctImageFolder/inter/cinePhase$i.mhd  \
 > $rcctFolder/largeWarp/fWarp$i.log 2>&1
-
-  done
+done
 
 echo "done"

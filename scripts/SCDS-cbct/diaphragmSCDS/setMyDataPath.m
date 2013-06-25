@@ -17,8 +17,8 @@ if ~exist(statsDir,'dir')
     mkdir(statsDir);
 end
 
-referenceImageFile =  [dataDir,'/rcct/image/inter/cinePhase50.mhd'];
-shapeModelPrefix ='rcct_ph3';
+referenceImageFile =  [dataDir,'/rcct/image/inter/cinePhase55.mhd'];
+shapeModelPrefix ='rcct1_ar';
 diffeoType='fluid';
 
 
@@ -27,5 +27,8 @@ if ~exist(outDiffeoDir,'dir')
     mkdir(outDiffeoDir);
 end
 cbctShapeDir= [dataDir,'/cbct/LungApex'];
-cbctShapeModelPrefix ='cbct_ph';
+cbctShapeModelPrefix ='cbct1_a';
+
+
+
 

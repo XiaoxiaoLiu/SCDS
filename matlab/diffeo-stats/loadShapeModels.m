@@ -18,12 +18,9 @@ fileNames = {fileStructs.name};
 
 P=[];
 for i = 1: length(fileNames)
-    
     fn = [shapeDir,'/',fileNames{i}];
-    
     %world coordinates
     pts = readLpts(fn);% 3*N
     P = [P ;pts(:)'];
 end
-
 

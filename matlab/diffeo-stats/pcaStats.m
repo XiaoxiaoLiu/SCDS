@@ -1,9 +1,12 @@
 function [ stats ] = pcaStats(P)
 %PURPOSE: Compute PCA statistics.
+% p: M(number of samples) x N (vector size)
+
 
 %[PCs,scores, LATENT]= princomp(P,'econ');
 [PCs,LATENT,explained]=pca(P');
-scores = P*PCs;
+meanP  = mean(P);
+scores = (P-repmat(meanP,size(P,1),1))*PCs;
 %num = 3;
 
 num = size(LATENT(:));
@@ -26,7 +29,7 @@ end
 
 
 LATENT = LATENT (1:num);
-meanP  = mean(P);
+
 
 
 

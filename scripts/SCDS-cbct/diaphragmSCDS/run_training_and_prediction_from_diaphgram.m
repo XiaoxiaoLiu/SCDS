@@ -5,12 +5,12 @@ dbstop if error ;
 
 
 %% folders and parameters setting
-patNo = {'445_pt10146002'};
+patNo = {'Pt27'};
 
-PC_num_p = 2;
+PC_num_p = 1;
 PC_num_h = 2;% all
 
-SavePredicHField = 0;
+SavePredicHField = 1;
 
 list_phaseNum = [0,1,2,3,4,6,7,8,9]; % phase50 is the reference phase!
 
@@ -23,6 +23,11 @@ list_phaseNum = [0,1,2,3,4,6,7,8,9]; % phase50 is the reference phase!
 [dims,origin,spacing] = readMetaHeader(referenceImageFile);
 
 
+%% only use this for the first time of running the script!!! 
+%offset the input diaphragm singals
+%regenerateShpaeModel(shapeDir,shapeModelPrefix);
+%regenerateShpaeModel(cbctShapeDir, cbctShapeModelPrefix);
+
 %----------------------------   Training -------------------------
 %% training all phases   [reference image: phase-50]
 %stats = trainSCDS(shapeDir, diffeoDir, statsDir, list, PC_num_p,shapeModelPrefix,PC_num_h,'pts');
@@ -33,10 +38,9 @@ stats = trainSCDS(shapeDir, diffeoDir, statsDir,list_phaseNum,PC_num_p,shapeMode
 
 %----------------------------   Prediction-------------------------
 %% loading surrogate diaphgram coordinates for prediction
-targetPhaseList ={'00','16','32','50','66','82'};
+targetPhaseList ={'05','15','25','35','45','65','75','85','95'};
 
 P = loadShapeModels(cbctShapeDir, cbctShapeModelPrefix);
-
 
 
 
@@ -56,7 +60,6 @@ for i = 1:length(targetPhaseList)
 end
 
 N =length(targetPhaseList);
-
 
 %------------------------- Analysis----------------------------
 

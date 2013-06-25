@@ -11,11 +11,15 @@ dims = size(im);
 
 
 %ROI in world unit => roi in voxel unit
-roi1 =ceil((ROI_ul-orig)./spacing +0.5);
+%roi1 =ceil((ROI_ul-orig)./spacing +0.5);
+roi1 =floor((ROI_ul-orig)./spacing +0.5);
+
 id=find(roi1<=0); roi1(id)=1;
 
 
-roi2 =floor( (ROI_lr-orig)./spacing+0.5);
+%roi2 =floor( (ROI_lr-orig)./spacing+0.5);
+roi2 =ceil( (ROI_lr-orig)./spacing+0.5);
+
 id=find(roi2<=0); roi2(id)=1;
 id=find(roi2>dims); roi2(id)=dims(id);
 

@@ -13,6 +13,11 @@ ENDIF(USE_ITK_FILE)
 #ADD_EXECUTABLE(Demons_ITK_Filter_3d Demons_ITK_Filter_3d.cxx)
 #TARGET_LINK_LIBRARIES(Demons_ITK_Filter_3d ITKAlgorithms ITKBasicFilters ITKCommon ITKIO)
 
+ADD_EXECUTABLE(IntensityWindowFilter IntensityWindowFilter.cxx)
+TARGET_LINK_LIBRARIES(IntensityWindowFilter ITKAlgorithms ITKBasicFilters ITKCommon ITKIO)
+
+ADD_EXECUTABLE(TranslateImage  TranslateImage.cxx)
+TARGET_LINK_LIBRARIES(TranslateImage ITKAlgorithms ITKBasicFilters ITKCommon ITKIO)
 
 ADD_EXECUTABLE(ResamplingImageBySpacing ResamplingImageBySpacing.cxx)
 TARGET_LINK_LIBRARIES(ResamplingImageBySpacing ITKAlgorithms ITKBasicFilters ITKCommon ITKIO)
